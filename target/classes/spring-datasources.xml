@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jee="http://www.springframework.org/schema/jee/"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc/"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd
-						http://www.springframework.org/schema/jee/
+						http://www.springframework.org/schema/jee						
 						http://www.springframework.org/schema/jee/spring-jee.xsd
-						http://www.springframework.org/schema/jdbc/
+						http://www.springframework.org/schema/jdbc
 						http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 						
 
-	<beans profile="local, default">
+	<beans profile="local">
 		<bean id="mySqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 			<property name="url" value="jdbc:mysql://localhost:3306/pweb" />
 			<property name="username" value="root" />
 			<property name="password" value="password" />
 		</bean>	
+	</beans>
+	
+	<beans profile="default, prod">
+		<jee:jndi-lookup id="mySqlDataSource" jndi-name="jdbc/mySqlDataSource"/>
 	</beans>
 
 </beans>

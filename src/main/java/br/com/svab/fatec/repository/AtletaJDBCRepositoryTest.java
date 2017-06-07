@@ -3,12 +3,7 @@ package br.com.svab.fatec.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +11,7 @@ import br.com.svab.fatec.model.Atleta;
 import br.com.svab.fatec.rowmapper.AtletaRowmapper;
 
 @Repository
-public class AtletaJDBCRepository 
+public class AtletaJDBCRepositoryTest 
 {
 	private JdbcTemplate jdbcTemplate;
 
@@ -38,24 +33,21 @@ public class AtletaJDBCRepository
 	@Value("${br.com.svab.fatec.delete.atleta.single}")
 	private String deleteAtletaById;
 
-	@Autowired
-	@Qualifier("mySqlDataSource")
-	public void setAtletaDatasource(DataSource atletaDatasource)
-	{
-		jdbcTemplate = new JdbcTemplate(atletaDatasource);
-	}
-
 	//CRUD Operations
 	public Atleta findOne(Long atletaId)
 	{
-		Atleta atleta = jdbcTemplate.queryForObject(selectAtletaById, new Object[] { atletaId }, new AtletaRowmapper());
-
+		Atleta atleta = new Atleta(101, "John", 1, 1);
+		
 		return atleta;
 	}
 	
 	public List<Atleta> findAll() 
 	{
-		List<Atleta> allAtletas = jdbcTemplate.query(selectAllAtletas, new BeanPropertyRowMapper<Atleta>());
+		List<Atleta> allAtletas = new ArrayList<Atleta>();
+		
+		allAtletas.add(new Atleta(101, "John", 1, 1));
+		allAtletas.add(new Atleta(201, "Doe", 2, 2));
+		allAtletas.add(new Atleta(301, "Eck", 3, 3));
 		
 		return allAtletas;
 	}

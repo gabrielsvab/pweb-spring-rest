@@ -20,14 +20,12 @@ import br.com.svab.fatec.service.AtletaService;
 import br.com.svab.fatec.util.CustomErrorType;
 
 @RestController
-@RequestMapping("/")
 public class AtletaController 
 {
 	@Autowired
 	AtletaService atletaService; //Service which will do all data retrieval/manipulation work
  
     // Todos os Atletas
-	 
     @RequestMapping(value = "/atleta/", method = RequestMethod.GET)
     public ResponseEntity<List<Atleta>> listAllAtletas() 
     {
@@ -44,7 +42,7 @@ public class AtletaController
     
     // Unico Atleta
     @RequestMapping(value = "/atleta/{idAtleta}", method = RequestMethod.GET)
-    public ResponseEntity getAtleta(@PathVariable("idAtleta") long id) 
+    public ResponseEntity getAtleta(@PathVariable("idAtleta") Long id) 
     {
         Atleta atleta = atletaService.findById(id);
         
@@ -73,7 +71,7 @@ public class AtletaController
 	 
     // Atualizar Atleta
     @RequestMapping(value = "/atleta/{idAtleta}", method = RequestMethod.PUT)
-    public ResponseEntity updateAtleta(@PathVariable("idAtleta") long id, @RequestBody Atleta atleta) 
+    public ResponseEntity updateAtleta(@PathVariable("idAtleta") Long id, @RequestBody Atleta atleta) 
     {
         Atleta current = atletaService.findById(id);
  
@@ -94,7 +92,7 @@ public class AtletaController
     
     // Deletar Atleta
     @RequestMapping(value = "/atleta/{idAtleta}", method = RequestMethod.DELETE)
-    public ResponseEntity<Atleta> deleteAtleta(@PathVariable("idAtleta") long id) 
+    public ResponseEntity<Atleta> deleteAtleta(@PathVariable("idAtleta") Long id) 
     {
         Atleta atleta = atletaService.findById(id);
         
@@ -107,12 +105,12 @@ public class AtletaController
     }
  
     
-    // Deletar todos os Atletas
-    @RequestMapping(value = "/atleta/", method = RequestMethod.DELETE)
-    public ResponseEntity<Atleta> deleteAllAtletas() 
-    {
-        atletaService.deleteAllAtletas();
-        return new ResponseEntity<Atleta>(HttpStatus.NO_CONTENT);
-    }
+//    // Deletar todos os Atletas
+//    @RequestMapping(value = "/atleta/", method = RequestMethod.DELETE)
+//    public ResponseEntity<Atleta> deleteAllAtletas() 
+//    {
+//        atletaService.deleteAllAtletas();
+//        return new ResponseEntity<Atleta>(HttpStatus.NO_CONTENT);
+//    }
 	 
 }

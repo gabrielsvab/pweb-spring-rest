@@ -15,10 +15,11 @@ public class AtletaRowmapper implements RowMapper<Atleta>
 	{
 		Atleta atleta = new Atleta();
 		
-		atleta.setIdAtleta(rs.getInt("IDATLETA"));
+		atleta.setIdAtleta(rs.getLong("IDATLETA"));
 		atleta.setNomeAtleta(rs.getString("NOMEATLETA"));
 		atleta.setNascAtleta(rs.getDate("NASCATLETA"));
-		//atleta.setModalidadeAtleta(rs.getInt("MODALIDADE_IDMODALIDADE"));
+		atleta.setModalidadeAtleta(rs.getLong("MODALIDADE_IDMODALIDADE"));
+		atleta.setPaisAtleta(rs.getLong("PAIS_IDPAIS"));
 		return atleta;
 	}
 

@@ -2,21 +2,18 @@ package br.com.svab.fatec.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.svab.fatec.model.Atleta;
-import br.com.svab.fatec.repository.AtletaRepository;
+import br.com.svab.fatec.repository.AtletaJDBCRepositoryTest;
 import br.com.svab.fatec.service.AtletaService;
 
-@Service("atletaService")
-@Transactional
+@Service
 public class AtletaServiceImpl implements AtletaService
 {
 	@Autowired
-	AtletaRepository atletaRepository;
+	AtletaJDBCRepositoryTest atletaRepository;
 	
 	public Atleta findById(Long idAtleta)
 	{
@@ -35,17 +32,12 @@ public class AtletaServiceImpl implements AtletaService
 	
 	public void updateAtleta(Atleta atleta)
 	{
-		saveAtleta(atleta);
+		atletaRepository.update(atleta);
 	}
 	
 	public void deleteAtletaById(Long idAtleta)
 	{
 		atletaRepository.delete(idAtleta);
-	}
-	
-	public void deleteAllAtletas()
-	{
-		atletaRepository.deleteAll();
 	}
 	
 	public List<Atleta> findAllAtletas()
@@ -57,6 +49,8 @@ public class AtletaServiceImpl implements AtletaService
 	{
 		return findByName(atleta.getNomeAtleta()) != null;
 	}
+
+	public void deleteAllAtletas() {}
 	
 	
 	

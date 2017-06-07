@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.com.svab.fatec</groupId>
-  <artifactId>PwebSpringRest</artifactId>
+  <artifactId>pwebrest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
