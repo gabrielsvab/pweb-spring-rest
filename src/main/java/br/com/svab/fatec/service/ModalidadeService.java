@@ -16,8 +16,8 @@ public interface ModalidadeService
 	
 	void deleteModalidadeById(Long idModalidade);
 	
-	void deleteAllModalidades();
-	
 	List<Modalidade> findAllModalidade();
+	
+	boolean isModalidadeExists(Modalidade modalidade);
 	
 }

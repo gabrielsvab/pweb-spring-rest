@@ -1,22 +1,10 @@
 package br.com.svab.fatec.model;
 
-import java.io.Serializable;
-
-//@Entity
-//@Table(name="PAIS")
-public class Pais implements Serializable
+public class Pais
 {
-	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy= GenerationType.IDENTITY)
-//	@Column(name="IDPAIS")
 	private Long idPais;
-	
-//	@NotEmpty
-//	@Column(name="NOMEPAIS", unique=true)
 	private String nomePais;
-
+	
 	//Getters and Setters
 	public Long getIdPais() {
 		return idPais;

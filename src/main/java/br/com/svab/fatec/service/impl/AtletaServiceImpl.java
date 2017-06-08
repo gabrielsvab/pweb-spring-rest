@@ -49,9 +49,4 @@ public class AtletaServiceImpl implements AtletaService
 	{
 		return findByName(atleta.getNomeAtleta()) != null;
 	}
-
-	public void deleteAllAtletas() {}
-	
-	
-	
 }

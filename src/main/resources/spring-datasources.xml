@@ -11,7 +11,7 @@
 						http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 						
 
-	<beans profile="local">
+	<beans profile="local, default">
 		<bean id="mySqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 			<property name="url" value="jdbc:mysql://localhost:3306/pweb" />
@@ -20,7 +20,7 @@
 		</bean>	
 	</beans>
 	
-	<beans profile="default, prod">
+	<beans profile="prod">
 		<jee:jndi-lookup id="mySqlDataSource" jndi-name="jdbc/mySqlDataSource"/>
 	</beans>
 

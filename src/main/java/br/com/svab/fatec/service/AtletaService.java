@@ -16,8 +16,6 @@ public interface AtletaService
 	
 	void deleteAtletaById(Long idAtleta);
 	
-	void deleteAllAtletas();
-	
 	List<Atleta> findAllAtletas();
 	
 	boolean isAtletaExists(Atleta atleta);

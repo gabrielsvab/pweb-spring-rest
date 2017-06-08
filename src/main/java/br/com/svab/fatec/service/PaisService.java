@@ -16,8 +16,8 @@ public interface PaisService
 	
 	void deletePaisById(Long idPais);
 	
-	void deleteAllPaiss();
-	
 	List<Pais> findAllPais();
+	
+	boolean isPaisExists(Pais pais);
 	
 }

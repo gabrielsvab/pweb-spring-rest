@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import br.com.svab.fatec.model.Atleta;
-import br.com.svab.fatec.rowmapper.AtletaRowmapper;
 
 @Repository
 public class AtletaJDBCRepositoryTest 
@@ -54,9 +53,9 @@ public class AtletaJDBCRepositoryTest
 
 	public Atleta findByName(String nomeAtleta) 
 	{
-		Atleta atleta = jdbcTemplate.queryForObject(selectAtletaByName, new Object[] { nomeAtleta }, new AtletaRowmapper());
-
-		return atleta;
+		//Atleta atleta = jdbcTemplate.queryForObject(selectAtletaByName, new Object[] { nomeAtleta }, new AtletaRowmapper());
+		
+		return null;
 	}
 
 	public void save(Atleta atleta) 

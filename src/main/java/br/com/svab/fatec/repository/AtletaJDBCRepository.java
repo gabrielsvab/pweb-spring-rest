@@ -1,6 +1,5 @@
 package br.com.svab.fatec.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
