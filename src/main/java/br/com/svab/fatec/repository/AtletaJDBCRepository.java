@@ -61,8 +61,17 @@ public class AtletaJDBCRepository
 
 	public Atleta findByName(String nomeAtleta) 
 	{
-		Atleta atleta = jdbcTemplate.queryForObject(selectAtletaByName, new Object[] { nomeAtleta }, new AtletaRowmapper());
-
+		Atleta atleta = new Atleta();
+		
+		try
+		{
+			atleta = jdbcTemplate.queryForObject(selectAtletaByName, new Object[] { nomeAtleta }, new AtletaRowmapper());
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+		
 		return atleta;
 	}
 

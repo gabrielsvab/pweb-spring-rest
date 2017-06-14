@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.svab.fatec.model.Atleta;
-import br.com.svab.fatec.repository.AtletaJDBCRepositoryTest;
+import br.com.svab.fatec.repository.AtletaJDBCRepository;
 import br.com.svab.fatec.service.AtletaService;
 
 @Service
 public class AtletaServiceImpl implements AtletaService
 {
 	@Autowired
-	AtletaJDBCRepositoryTest atletaRepository;
+	AtletaJDBCRepository atletaRepository;
 	
 	public Atleta findById(Long idAtleta)
 	{

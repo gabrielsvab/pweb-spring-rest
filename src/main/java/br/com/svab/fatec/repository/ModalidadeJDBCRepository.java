@@ -60,8 +60,16 @@ public class ModalidadeJDBCRepository
 	}
 
 	public Modalidade findByName(String nomeModalidade) 
-	{
-		Modalidade modalidade = jdbcTemplate.queryForObject(selectModalidadeByName, new Object[] { nomeModalidade }, new ModalidadeRowmapper());
+	{	
+		Modalidade modalidade = new Modalidade();
+		try
+		{
+			modalidade = jdbcTemplate.queryForObject(selectModalidadeByName, new Object[] { nomeModalidade }, new ModalidadeRowmapper());
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
 
 		return modalidade;
 	}

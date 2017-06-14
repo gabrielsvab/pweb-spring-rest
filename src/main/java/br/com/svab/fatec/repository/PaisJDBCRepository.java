@@ -61,7 +61,17 @@ public class PaisJDBCRepository
 
 	public Pais findByName(String nomePais) 
 	{
-		Pais pais = jdbcTemplate.queryForObject(selectPaisByName, new Object[] { nomePais }, new PaisRowmapper());
+		Pais pais = new Pais();
+		
+		try
+		{
+			pais = jdbcTemplate.queryForObject(selectPaisByName, new Object[] { nomePais }, new PaisRowmapper());
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+		
 
 		return pais;
 	}
