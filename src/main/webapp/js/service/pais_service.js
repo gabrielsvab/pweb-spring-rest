@@ -2,7 +2,7 @@
 
 angular.module('myApp').factory('PaisService', ['$http', '$q', function($http, $q){
 
-    var REST_SERVICE_URI = 'http://localhost:8082/pwebrest/pais/';
+    var REST_SERVICE_URI = 'http://67.205.182.13:8080/pwebrest/pais/';
 
     var factory = {
         fetchAllPaises: fetchAllPaises,

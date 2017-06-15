@@ -2,7 +2,7 @@
 
 angular.module('myApp').factory('ModalidadeService', ['$http', '$q', function($http, $q){
 
-    var REST_SERVICE_URI = 'http://localhost:8082/pwebrest/modalidade/';
+    var REST_SERVICE_URI = 'http://67.205.182.13:8080/pwebrest/modalidade/';
 
     var factory = {
         fetchAllModalidades: fetchAllModalidades,

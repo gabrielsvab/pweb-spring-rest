@@ -15,6 +15,7 @@
 	
 	<context:annotation-config/>			
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
 	
 	<import resource="classpath*:spring-datasources.xml"/>
 	

@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/service/atleta_service.js"></script>
+    <script src="js/service/modalidade_service.js"></script>
+    <script src="js/service/pais_service.js"></script>
+    <script src="js/controller/atleta_controller.js"></script>
+    <script src="js/controller/modalidade_controller.js"></script>
+    <script src="js/controller/pais_controller.js"></script>
     <title>PwebRestFinal</title>
-
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <style>
+        .atletavalidation.ng-valid {
+            background-color: lightgreen;
+        }
+        
+        .atletavalidation.ng-dirty.ng-invalid-required {
+            background-color: red;
+        }
+        
+        .atletavalidation.ng-dirty.ng-invalid-minlength {
+            background-color: yellow;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="css/app.css" rel="stylesheet"></link>
 </head>
-<body>
-    <ul class="nav nav-tabs">
-         <li ng-class="{active: activetab == '/atleta'}"><a href="#/atleta">Formulario de Atleta</a></li>
-         <li ng-class="{active: activetab == '/pais'}"><a href="#/pais">Cadastro de País</a></li>
-         <li ng-class="{active: activetab == '/modalidade'}"><a href="#/modalidade">Cadastro de Modalidade</a></li>
-      </ul>
 
-      <div ng-view></div>
+<body ng-app="myApp">
+    <center>
+        <div class="page-header">
+                <h1>Trabalho Final</h1>
+        </div>
+    </center>
+    <ul class="nav nav-tabs">
+        <li ng-class="{active: activetab == '/atleta'}"><a href="#!atleta">Formulario de Atleta</a></li>
+        <li ng-class="{active: activetab == '/pais'}"><a href="#!pais">Cadastro de País</a></li>
+        <li ng-class="{active: activetab == '/modalidade'}"><a href="#!modalidade">Cadastro de Modalidade</a></li>
+    </ul>
+
+    <div ng-view></div>
 </body>
+
 </html>
