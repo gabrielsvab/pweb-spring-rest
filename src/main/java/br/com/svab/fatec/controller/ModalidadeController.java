@@ -37,6 +37,8 @@ public class ModalidadeController
             return new ResponseEntity<List<Modalidade>>(HttpStatus.NO_CONTENT);
         }
         
+        
+        
         return new ResponseEntity<List<Modalidade>>(modalidades, HttpStatus.OK);
     }
 	 
@@ -57,6 +59,7 @@ public class ModalidadeController
 	 
     
     // Adicionar Modalidade
+    
     @PostMapping(value = "/", consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Modalidade> createModalidade(@RequestBody Modalidade modalidade, UriComponentsBuilder ucBuilder) 
     {

@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -54,7 +53,7 @@ public class ModalidadeJDBCRepository
 	
 	public List<Modalidade> findAll() 
 	{
-		List<Modalidade> allModalidades = jdbcTemplate.query(selectAllModalidades, new BeanPropertyRowMapper<Modalidade>());
+		List<Modalidade> allModalidades = jdbcTemplate.query(selectAllModalidades, new ModalidadeRowmapper());
 		
 		return allModalidades;
 	}
@@ -76,14 +75,14 @@ public class ModalidadeJDBCRepository
 
 	public void save(Modalidade modalidade) 
 	{
-		Object[] params = new Object[] {modalidade.getIdModalidade(),modalidade.getNomeModalidade()};
+		Object[] params = new Object[] {modalidade.getNomeModalidade()};
 
 		jdbcTemplate.update(insertModalidade, params);
 	}
 
 	public void update(Modalidade modalidade) 
 	{
-		Object[] params = new Object[] {modalidade.getNomeModalidade()};
+		Object[] params = new Object[] {modalidade.getNomeModalidade(), modalidade.getIdModalidade()};
 
 		jdbcTemplate.update(updateModalidade, params);
 	}

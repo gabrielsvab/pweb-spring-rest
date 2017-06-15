@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -54,7 +53,7 @@ public class AtletaJDBCRepository
 	
 	public List<Atleta> findAll() 
 	{
-		List<Atleta> allAtletas = jdbcTemplate.query(selectAllAtletas, new BeanPropertyRowMapper<Atleta>());
+		List<Atleta> allAtletas = jdbcTemplate.query(selectAllAtletas, new AtletaRowmapper());
 		
 		return allAtletas;
 	}
@@ -77,14 +76,14 @@ public class AtletaJDBCRepository
 
 	public void save(Atleta atleta) 
 	{
-		Object[] params = new Object[] {atleta.getIdAtleta(),atleta.getNomeAtleta(),atleta.getNascAtleta(),atleta.getModalidadeAtleta(),atleta.getPaisAtleta()};
+		Object[] params = new Object[] {atleta.getNomeAtleta(),atleta.getNascAtleta(),atleta.getModalidadeAtleta(),atleta.getPaisAtleta()};
 
 		jdbcTemplate.update(insertAtleta, params);
 	}
 
 	public void update(Atleta atleta) 
 	{
-		Object[] params = new Object[] {atleta.getNomeAtleta(),atleta.getNascAtleta(),atleta.getModalidadeAtleta(),atleta.getPaisAtleta()};
+		Object[] params = new Object[] {atleta.getNomeAtleta(),atleta.getNascAtleta(),atleta.getModalidadeAtleta(),atleta.getPaisAtleta(), atleta.getIdAtleta()};
 
 		jdbcTemplate.update(updateAtleta, params);
 	}

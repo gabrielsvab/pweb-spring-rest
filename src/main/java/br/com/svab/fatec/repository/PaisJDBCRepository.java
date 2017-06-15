@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -47,14 +46,23 @@ public class PaisJDBCRepository
 	//CRUD Operations
 	public Pais findOne(Long idPais)
 	{
-		Pais pais = jdbcTemplate.queryForObject(selectPaisById, new Object[] { idPais }, new PaisRowmapper());
-
+		Pais pais = new Pais();
+		
+		try
+		{
+			pais = jdbcTemplate.queryForObject(selectPaisById, new Object[] { idPais }, new PaisRowmapper());
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+		
 		return pais;
 	}
 	
 	public List<Pais> findAll() 
 	{
-		List<Pais> allPais = jdbcTemplate.query(selectAllPais, new BeanPropertyRowMapper<Pais>());
+		List<Pais> allPais = jdbcTemplate.query(selectAllPais, new PaisRowmapper());
 		
 		return allPais;
 	}
@@ -78,14 +86,14 @@ public class PaisJDBCRepository
 
 	public void save(Pais pais) 
 	{
-		Object[] params = new Object[] {pais.getIdPais(),pais.getNomePais()};
+		Object[] params = new Object[] {pais.getNomePais()};
 
 		jdbcTemplate.update(insertPais, params);
 	}
 
 	public void update(Pais pais) 
 	{
-		Object[] params = new Object[] {pais.getNomePais()};
+		Object[] params = new Object[] {pais.getNomePais(), pais.getIdPais()};
 
 		jdbcTemplate.update(updatePais, params);
 	}
