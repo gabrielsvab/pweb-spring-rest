@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/app.js"></script>
+    <title>PwebRestFinal</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <ul class="nav nav-tabs">
+         <li ng-class="{active: activetab == '/atleta'}"><a href="#/atleta">Formulario de Atleta</a></li>
+         <li ng-class="{active: activetab == '/pais'}"><a href="#/pais">Cadastro de País</a></li>
+         <li ng-class="{active: activetab == '/modalidade'}"><a href="#/modalidade">Cadastro de Modalidade</a></li>
+      </ul>
+
+      <div ng-view></div>
+</body>
+</html>

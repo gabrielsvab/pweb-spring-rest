@@ -30,7 +30,7 @@ angular.module('myApp').controller('AtletaController', ['$scope', 'AtletaService
 
     function createAtleta(atleta)
     {
-        AtletaService.createUser(atleta)
+        AtletaService.createAtleta(atleta)
             .then(
             fetchAllAtletas,
             function(errResponse)
@@ -86,7 +86,7 @@ angular.module('myApp').controller('AtletaController', ['$scope', 'AtletaService
         {
             if(self.atletas[i].idAtleta === idAtleta) 
             {
-                self.atleta = angular.copy(self.atleta[i]);
+                self.atleta = angular.copy(self.atletas[i]);
                 break;
             }
         }

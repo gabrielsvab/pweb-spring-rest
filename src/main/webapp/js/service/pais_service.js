@@ -1,19 +1,19 @@
 'use strict';
 
-angular.module('myApp').factory('AtletaService', ['$http', '$q', function($http, $q){
+angular.module('myApp').factory('PaisService', ['$http', '$q', function($http, $q){
 
-    var REST_SERVICE_URI = 'http://localhost:8082/pwebrest/atleta/';
+    var REST_SERVICE_URI = 'http://localhost:8082/pwebrest/pais/';
 
     var factory = {
-        fetchAllAtletas: fetchAllAtletas,
-        createAtleta: createAtleta,
-        updateAtleta:updateAtleta,
-        deleteAtleta:deleteAtleta
+        fetchAllPaises: fetchAllPaises,
+        createPais: createPais,
+        updatePais:updatePais,
+        deletePais:deletePais
     };
 
     return factory;
 
-    function fetchAllAtletas() {
+    function fetchAllPaises() {
         var deferred = $q.defer();
         $http.get(REST_SERVICE_URI)
             .then(
@@ -21,22 +21,22 @@ angular.module('myApp').factory('AtletaService', ['$http', '$q', function($http,
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while fetching Atletas');
+                console.error('Error while fetching Paises');
                 deferred.reject(errResponse);
             }
         );
         return deferred.promise;
     }
 
-    function createAtleta(atleta) {
+    function createPais(pais) {
         var deferred = $q.defer();
-        $http.post(REST_SERVICE_URI, atleta)
+        $http.post(REST_SERVICE_URI, pais)
             .then(
             function (response) {
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while creating Atleta');
+                console.error('Error while creating Pais');
                 deferred.reject(errResponse);
             }
         );
@@ -44,30 +44,30 @@ angular.module('myApp').factory('AtletaService', ['$http', '$q', function($http,
     }
 
 
-    function updateAtleta(atleta, idAtleta) {
+    function updatePais(pais, idPais) {
         var deferred = $q.defer();
-        $http.put(REST_SERVICE_URI+idAtleta, atleta)
+        $http.put(REST_SERVICE_URI+idPais, pais)
             .then(
             function (response) {
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while updating Atleta');
+                console.error('Error while updating Pais');
                 deferred.reject(errResponse);
             }
         );
         return deferred.promise;
     }
 
-    function deleteAtleta(idAtleta) {
+    function deletePais(idPais) {
         var deferred = $q.defer();
-        $http.delete(REST_SERVICE_URI+idAtleta)
+        $http.delete(REST_SERVICE_URI+idPais)
             .then(
             function (response) {
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while deleting Atleta');
+                console.error('Error while deleting Pais');
                 deferred.reject(errResponse);
             }
         );
